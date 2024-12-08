@@ -15,6 +15,11 @@
     <meta property="og:url" content="bodenax.com">
 
 
+    <style>
+        #content {
+          display: none; /* Hide content initially */
+        }
+    </style>
 
     <!-- Favicon and touch icons -->
     <!-- <link rel="shortcut icon" href=""> -->
@@ -46,7 +51,7 @@
 
 </head>
 
-<body>
+<body onload="validatePassword()" id="content">
     <!-- Fixed Navigation Bar Start -->
     <div class="c-nav-section">
         <!-- Brand/logo -->
@@ -934,6 +939,27 @@
     <!--Script -->
     <script src="./js/lazyLoading.js"> </script>
     <script src="./js/slick.js"> </script>
+
+      <script>
+        function validatePassword() {
+          let password;
+          const pattern = /^Test@12345$/;
+    
+          // Keep prompting the user until the correct password is entered
+          while (true) {
+            password = prompt("Enter the password:");
+    
+            // Check if password matches the required pattern
+            if (pattern.test(password)) {
+                document.getElementById("content").style.display = "block";
+              alert("Password is correct!");
+              break; // Exit the loop when the correct password is entered
+            } else {
+              alert("Password is incorrect. Please try again.");
+            }
+          }
+        }
+      </script>
 </body>
 
 </html>
